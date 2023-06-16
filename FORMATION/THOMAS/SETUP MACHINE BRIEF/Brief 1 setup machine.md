@@ -62,3 +62,11 @@
 
 
 ![fdsfsd](./images/nvmPNG.PNG)
+
+
+- après installer node.js
+saisir : 
+nvm install node
+récupréer ladernière version 
+![fdsfsd](./images/node.PNG)
+![fdsfsd](./images/node%202.PNG)

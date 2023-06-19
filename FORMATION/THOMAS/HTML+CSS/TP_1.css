@@ -52,3 +52,8 @@ section {
     width: 55%;
 }
 
+strong {
+
+    color: red;
+    font-weight: bold;
+}

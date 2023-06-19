@@ -1,5 +1,6 @@
 body {
     width: 80%;
+    margin: auto;
 }
 
 h1 {
@@ -34,7 +35,7 @@ ul {
   
 ol {
     color: blueviolet;
-    width: 50%;
+    
 }
 
 section {
@@ -48,10 +49,12 @@ section {
     
  }
 
-.article1 {
+#article1 {
     width: 55%;
 }
-
+#article2{
+    width: 50%;
+}
 strong {
 
     color: red;

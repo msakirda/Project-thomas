@@ -15,18 +15,14 @@ h2 {
 #roller1  {
     
     width: 50%;
-    
 }
 
 #roller2 {
 
-    border: 1px solid blue;
     width: 30%;
-    text-align: center;
-    margin-left: 10%;
 }
 
-ul{
+ul {
     display: inline-block;
     border: solid 3px rgb(23, 250, 2);
     width: 50%;
@@ -42,10 +38,9 @@ section {
     display: flex;
 }
 
-#vertical-line{
+#vertical-line {
      border-left: 3px dotted #000; 
      display: inline-block;
-     height: 200px;   
+        
  }
 
- 

@@ -12,6 +12,9 @@ h2 {
     font-style: italic;
 }
 
+.images{
+    display: flex;
+}
 #roller1  {
     
     width: 50%;
@@ -20,13 +23,13 @@ h2 {
 #roller2 {
 
     width: 30%;
+    margin:auto;
 }
 
 ul {
     display: inline-block;
     border: solid 3px rgb(23, 250, 2);
-    width: 50%;
-
+    
   }
   
 ol {
@@ -36,11 +39,16 @@ ol {
 
 section {
     display: flex;
+    
 }
 
 #vertical-line {
      border-left: 3px dotted #000; 
      display: inline-block;
-        
+    
  }
+
+.article1 {
+    width: 55%;
+}
 

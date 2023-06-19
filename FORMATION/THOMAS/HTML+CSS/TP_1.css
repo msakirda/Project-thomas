@@ -12,7 +12,16 @@ h2 {
     font-style: italic;
 }
 
-img  {
+#roller1  {
+    
     width: 50%;
+    
+}
+
+#roller2 {
+
+    border: 1px solid blue;
+    width: 30%;
+    text-align: center;
 }
 

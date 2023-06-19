@@ -28,9 +28,15 @@ h2 {
 ul{
     display: inline-block;
     border: solid 3px rgb(23, 250, 2);
+
   }
 
 ol {
     color: blueviolet;
     padding: 10px;
+    border: dotted 3px rgb(121, 115, 115);
+}
+
+section {
+    display: flex;
 }

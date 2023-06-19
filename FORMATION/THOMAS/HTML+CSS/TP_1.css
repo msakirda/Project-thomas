@@ -25,3 +25,12 @@ h2 {
     text-align: center;
 }
 
+ul{
+    display: inline-block;
+    border: solid 3px rgb(23, 250, 2);
+  }
+
+ol {
+    color: blueviolet;
+    padding: 10px;
+}

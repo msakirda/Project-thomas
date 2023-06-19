@@ -23,20 +23,29 @@ h2 {
     border: 1px solid blue;
     width: 30%;
     text-align: center;
+    margin-left: 10%;
 }
 
 ul{
     display: inline-block;
     border: solid 3px rgb(23, 250, 2);
+    width: 50%;
 
   }
-
+  
 ol {
     color: blueviolet;
-    padding: 10px;
-    border: dotted 3px rgb(121, 115, 115);
+    width: 50%;
 }
 
 section {
     display: flex;
 }
+
+#vertical-line{
+     border-left: 3px dotted #000; 
+     display: inline-block;
+     height: 200px;   
+ }
+
+ 

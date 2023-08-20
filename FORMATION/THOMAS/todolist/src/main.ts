@@ -3,7 +3,7 @@ const addButton = document.getElementById('addButton') as HTMLButtonElement;
 const taskList = document.getElementById('taskList') as HTMLUListElement;
 
 function loadTasksFromAPI() {
-  fetch('http://localhost:1337/tasks') // Remplacez l'URL par le point de terminaison de votre API Strapi
+  fetch('http://localhost:1337') 
     .then(response => response.json())
     .then(tasks => tasks.forEach(task => addTaskToList(task.title)));
 }
@@ -15,22 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
 function addTaskToList(taskText: string) {
   const li = document.createElement('li');
   const deleteIcon = document.createElement('i');
-  
-  // ...
 
   // Gestionnaire d'événements pour le clic sur l'icône de corbeille
   deleteIcon.addEventListener('click', () => {
     removeTaskFromAPI(taskText);
   });
 
-  // ...
 
   taskList.prepend(li);
 }
 
 function removeTaskFromAPI(taskText: string) {
-  fetch(`http://localhost:1337/tasks?title=${taskText}`, { // Remplacez l'URL par le point de terminaison de suppression de votre API Strapi
-    method: 'DELETE',
+  fetch(`http://localhost:1337?title=${taskText}`, { 
   })
     .then(response => response.json())
     .then(data => {
@@ -43,7 +39,7 @@ addButton.addEventListener('click', () => {
   if (newTask !== '') {
     addTaskToList(newTask);
 
-    fetch('http://localhost:1337/tasks', { // Remplacez l'URL par le point de terminaison de création de votre API Strapi
+    fetch('http://localhost:1337', { 
       method: 'POST',
       body: JSON.stringify({ title: newTask }),
       headers: {

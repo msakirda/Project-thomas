@@ -1,0 +1,63 @@
+/* Réinitialisation des marges et des rembourrages */
+body, h1, ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Centrer le contenu verticalement et horizontalement */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Style pour la zone de saisie de la tâche */
+#taskInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Style pour le bouton d'ajout */
+#addButton {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Style pour la liste des tâches */
+#taskList {
+  list-style: none;
+  margin-top: 20px;
+}
+
+#taskList li {
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+/* Ajouter une icône de corbeille devant chaque tâche */
+#taskList li::before {
+  content: "\f2ed";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+  color: #d9534f;
+}

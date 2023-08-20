@@ -3,8 +3,7 @@ const addButton = document.getElementById('addButton') as HTMLButtonElement;
 const taskList = document.getElementById('taskList') as HTMLUListElement;
 
 function loadTasksFromAPI() {
-  // Remplacez l'URL par le point de terminaison de votre API Strapi
-  fetch('https://votre-api-strapi.com/tasks')
+  fetch('http://localhost:1337/tasks') // Remplacez l'URL par le point de terminaison de votre API Strapi
     .then(response => response.json())
     .then(tasks => tasks.forEach(task => addTaskToList(task.title)));
 }
@@ -17,15 +16,6 @@ function addTaskToList(taskText: string) {
   const li = document.createElement('li');
   const deleteIcon = document.createElement('i');
   
-  // Icône de corbeille (icône de suppression)
-  deleteIcon.classList.add('fas', 'fa-trash-alt');
-  deleteIcon.style.cursor = 'pointer';
-  li.appendChild(deleteIcon);
-
-  const taskSpan = document.createElement('span');
-  taskSpan.textContent = taskText;
-  li.appendChild(taskSpan);
-
   // ...
 
   // Gestionnaire d'événements pour le clic sur l'icône de corbeille
@@ -39,8 +29,7 @@ function addTaskToList(taskText: string) {
 }
 
 function removeTaskFromAPI(taskText: string) {
-  // Remplacez l'URL par le point de terminaison de suppression de votre API Strapi
-  fetch(`https://votre-api-strapi.com/tasks?title=${taskText}`, {
+  fetch(`http://localhost:1337/tasks?title=${taskText}`, { // Remplacez l'URL par le point de terminaison de suppression de votre API Strapi
     method: 'DELETE',
   })
     .then(response => response.json())
@@ -54,8 +43,7 @@ addButton.addEventListener('click', () => {
   if (newTask !== '') {
     addTaskToList(newTask);
 
-    // Remplacez l'URL par le point de terminaison de création de votre API Strapi
-    fetch('https://votre-api-strapi.com/tasks', {
+    fetch('http://localhost:1337/tasks', { // Remplacez l'URL par le point de terminaison de création de votre API Strapi
       method: 'POST',
       body: JSON.stringify({ title: newTask }),
       headers: {

@@ -1,67 +1,72 @@
-// Récupérer les éléments du DOM
 const taskInput = document.getElementById('taskInput') as HTMLInputElement;
 const addButton = document.getElementById('addButton') as HTMLButtonElement;
 const taskList = document.getElementById('taskList') as HTMLUListElement;
 
-// Charger les tâches depuis le stockage local lors du chargement de la page
+function loadTasksFromAPI() {
+  // Remplacez l'URL par le point de terminaison de votre API Strapi
+  fetch('https://votre-api-strapi.com/tasks')
+    .then(response => response.json())
+    .then(tasks => tasks.forEach(task => addTaskToList(task.title)));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const storedTasks = localStorage.getItem('tasks');
-  const tasks: string[] = storedTasks && typeof storedTasks === 'string' ? JSON.parse(storedTasks) : [];
-  tasks.forEach(task => addTaskToList(task));
+  loadTasksFromAPI();
 });
 
-// Ajouter une tâche à la liste
 function addTaskToList(taskText: string) {
   const li = document.createElement('li');
-  li.textContent = taskText;
+  const deleteIcon = document.createElement('i');
   
-  // Bouton de suppression
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Supprimer';
-  li.appendChild(deleteButton);
-  
-  // Ajouter le nouvel élément li en haut de la liste des tâches
-  taskList.prepend(li);
+  // Icône de corbeille (icône de suppression)
+  deleteIcon.classList.add('fas', 'fa-trash-alt');
+  deleteIcon.style.cursor = 'pointer';
+  li.appendChild(deleteIcon);
 
-  // Gestionnaire d'événements pour le clic sur le bouton de suppression
-  deleteButton.addEventListener('click', () => {
-    removeTaskFromList(li, taskText);
+  const taskSpan = document.createElement('span');
+  taskSpan.textContent = taskText;
+  li.appendChild(taskSpan);
+
+  // ...
+
+  // Gestionnaire d'événements pour le clic sur l'icône de corbeille
+  deleteIcon.addEventListener('click', () => {
+    removeTaskFromAPI(taskText);
   });
+
+  // ...
+
+  taskList.prepend(li);
 }
 
-// Fonction de suppression
-function removeTaskFromList(li: HTMLLIElement, taskText: string) {
-  // Supprimer l'élément li de la liste visuelle
-  taskList.removeChild(li);
-  
-  // Récupérer les tâches existantes depuis le stockage local
-  const storedTasks = localStorage.getItem('tasks');
-  const tasks: string[] = storedTasks && typeof storedTasks === 'string' ? JSON.parse(storedTasks) : [];
-
-  // Supprimer la tâche du tableau des tâches
-  const taskIndex = tasks.indexOf(taskText);
-  if (taskIndex !== -1) {
-    tasks.splice(taskIndex, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
+function removeTaskFromAPI(taskText: string) {
+  // Remplacez l'URL par le point de terminaison de suppression de votre API Strapi
+  fetch(`https://votre-api-strapi.com/tasks?title=${taskText}`, {
+    method: 'DELETE',
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Tâche supprimée de l\'API Strapi:', data);
+    });
 }
 
-// Enregistrer une nouvelle tâche dans le stockage local
 addButton.addEventListener('click', () => {
   const newTask = taskInput.value;
   if (newTask !== '') {
     addTaskToList(newTask);
-    
-    // Récupérer les tâches existantes depuis le stockage local
-    const storedTasks = localStorage.getItem('tasks');
-    const tasks: string[] = storedTasks && typeof storedTasks === 'string' ? JSON.parse(storedTasks) : [];
-    
-    // Ajouter la nouvelle tâche au début de la liste
-    tasks.unshift(newTask);
-    
-    // Enregistrer la liste mise à jour dans le stockage local
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    
-    taskInput.value = ''; // Réinitialiser l'entrée
+
+    // Remplacez l'URL par le point de terminaison de création de votre API Strapi
+    fetch('https://votre-api-strapi.com/tasks', {
+      method: 'POST',
+      body: JSON.stringify({ title: newTask }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Tâche ajoutée à l\'API Strapi:', data);
+      });
+
+    taskInput.value = '';
   }
 });

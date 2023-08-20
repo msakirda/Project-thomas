@@ -11,12 +11,14 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
 }
 
 h1 {
+  font-size: 28px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 /* Style pour la zone de saisie de la tâche */
@@ -25,6 +27,8 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 10px;
+  font-size: 14px;
+  width: 250px;
 }
 
 /* Style pour le bouton d'ajout */
@@ -35,6 +39,7 @@ h1 {
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
+  font-size: 14px;
 }
 
 /* Style pour la liste des tâches */
@@ -44,20 +49,43 @@ h1 {
 }
 
 #taskList li {
-  padding: 8px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Ajouter une icône de corbeille devant chaque tâche */
-#taskList li::before {
-  content: "\f2ed";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+#taskList li:hover {
+  background-color: #f9f9f9;
+  border-color: #aaa;
+}
+
+#taskList li span {
+  flex-grow: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Style pour une tâche réalisée */
+.task-done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Style pour l'icône de corbeille */
+#taskList li i {
   margin-right: 10px;
+  font-size: 18px;
   color: #d9534f;
+  cursor: pointer;
+}
+
+/* Style pour la coche */
+#taskList li input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
 }
